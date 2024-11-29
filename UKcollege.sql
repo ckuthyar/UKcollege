@@ -34,4 +34,10 @@ insert into auths(student_id,junk1)values
 insert into authm(staff_id, junk2)values
 (1,"12a5681ca7d2e1d8850b0e6080a6223a"),
 (2,"2bc36363dce0f137fbc37decd6afebce");
+insert into complaints(location_id, room_id, createdOn, createdByStudent, status, remarksByStudent)values
+(1,1,"2024-11-29 22:36:00",1,"OPEN","Foul smell due to dead rat is coming from window on northside");
+
+update complaints set status="ACK", remarksByMteam="Will send Housekeeping staff to clean", updatedByMteam=1 where id=1;
+update complaints set status="WIP", remarksByMteam="started work", updatedOn=now(), updatedByMteam=2 where id=1;
+update complaints set status="COMP", remarksByMteam="finished work", updatedOn=now(), updatedByMteam=2 where id=1;
 
