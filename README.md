@@ -17,7 +17,7 @@ create table authm(id bigint primary key auto_increment, staff_id bigint, junk2 
 create table complaints(id bigint primary key auto_increment, location_id bigint, room_id bigint, createdOn datetime, updatedOn datetime, createdByStudent bigint, status enum("OPEN","ACK","WIP","COMP","CLOSED"),
 remarksByStudent varchar(1000), remarksByMteam varchar(1000), updatedByMteam bigint, foreign key(location_id) references locations(id), foreign key(room_id) references rooms(id), 
 foreign key(createdByStudent)references students(id), foreign key(updatedByMteam)references mteam(id));  
- 
+
 
 Port numbers   
 8081 - TimeTable   
@@ -47,4 +47,39 @@ loginMteam()
 
 addComplaints()    
 viewComplaints()    
+
+REST API using Java Spring Boot
+Step1 - Create Spring Boot Project - File-New-Spring Starter Project   
+Choose Type=Maven  (not Gradle)   
+Choose Packing=jar   
+Choose Version=17   
+Choose Language=Java   
+Enter Package=pkg1   
+Add Dependency=Spring Web   
+Add Dependency=Spring Data JPA   
+Add Dependency=MySQL Driver   
+Add Dependency=Thymeleaf   
+
+Step2: In src/main/java, within pkg1, create 4 sub-packages   
+-pkg1.entity   
+-pkg1.repo   
+-pkg1.controller   
+-pkg1.webcontroller 
+Wait for Project Update to be complete (2 to 3 minutes)   
+
+Step3: Create Entity Class within pkg1.entity 
+3a. Add annotations @Entity, @Table in the file
+3b. Add annotations @Id, @GeneratedValue inside the class
+```
+@Entity
+@Table(name="locations")   //tablename
+public class LocationsEntity {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	long location_id;
+	String city_name;
+	String address;
+}
+```
+
 
